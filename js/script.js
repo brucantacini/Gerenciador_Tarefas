@@ -33,7 +33,13 @@ botaoCadastro.addEventListener("click", () => {
     }
     criarTarefa(titulo); 
     inputTarefa.value = "";
-});
+}); 
+
+function calcularTotalConcluidas() {
+    return tarefas.reduce((contador, tarefa) => {
+        return tarefa.concluida ? contador + 1 : contador;
+    }, 0);
+}
 
 // Função para atualizar a lista de tarefas no DOM usando forEach
 function atualizarTarefas(filtrarPendentes = false) {
@@ -63,7 +69,10 @@ function atualizarTarefas(filtrarPendentes = false) {
 
 // Adicionando evento ao botão "Filtrar Pendentes"
 botaoFiltrar.addEventListener("click", () => {
-    atualizarTarefas(true); 
+    const totalConcluidas = calcularTotalConcluidas();
+    alert(`Total de tarefas concluídas: ${totalConcluidas}`);
+
+    atualizarTarefas(true);
 });
 
 // Usando map para criar uma nova lista com os títulos em maiúsculas
@@ -76,12 +85,16 @@ const totalConcluidas = tarefas.reduce((contador, tarefa) => {
 }, 0);
 alert(`Total de tarefas concluídas: ${totalConcluidas}`);
 
-// Usando destructuring para extrair título e concluída de uma tarefa específica
-const tarefaExemplo = tarefas[0];
-const { titulo, concluida } = tarefaExemplo;
-alert(`Título: ${titulo}, Concluída: ${concluida ? "Sim" : "Não"}`);
+// Usando destructuring para extrair título e concluída de todas as tarefas concluidas e mostrar em um alert
+const tarefasConcluidas = tarefas.filter(({ concluida }) => concluida);
+console.log("Tarefas Concluídas:", tarefasConcluidas);
 
-// Atualizar tarefas iniciais ao carregar a página
+//  Crie uma função que aceita parâmetros e cria uma tarefa.
+function criarTarefa(titulo, concluida = false) {
+    const tarefa = { titulo, concluida };
+    return tarefa;
+}
+
 atualizarTarefas();
 
 
