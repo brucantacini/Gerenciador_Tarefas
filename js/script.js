@@ -70,6 +70,11 @@ botaoFiltrar.addEventListener("click", () => {
 const tarefasMaiusculas = tarefas.map(tarefa => tarefa.titulo.toUpperCase());
 console.log("Tarefas em Maiúsculas:", tarefasMaiusculas);
 
+// Usando reduce para calcular o total de tarefas concluídas
+const totalConcluidas = tarefas.reduce((contador, tarefa) => {
+    return tarefa.concluida ? contador + 1 : contador;
+}, 0);
+alert(`Total de tarefas concluídas: ${totalConcluidas}`);
 
 
 
