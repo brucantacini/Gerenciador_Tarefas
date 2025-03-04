@@ -23,6 +23,22 @@ function criarTarefa(titulo, concluida = false) {
     alert(`Tarefa "${titulo}" adicionada com sucesso!`); // Exibe o alert
 }
 
+// Adicionando evento ao botão "Cadastrar"
+botaoCadastro.addEventListener("click", () => {
+    const titulo = inputTarefa.value.trim();
+
+    if (titulo === "") {
+        alert("Por favor, digite uma tarefa!");
+        return;
+    }
+
+    // Usando a função para criar uma nova tarefa
+    criarTarefa(titulo);
+
+    // Limpando input   
+    inputTarefa.value = "";
+});
+
 // Função para atualizar a lista de tarefas no DOM usando forEach
 function atualizarTarefas(filtrarPendentes = false) {
     listaTarefas.innerHTML = "";
@@ -48,3 +64,10 @@ function atualizarTarefas(filtrarPendentes = false) {
         listaTarefas.appendChild(li);
     });
 }
+
+// Adicionando evento ao botão "Filtrar Pendentes"
+botaoFiltrar.addEventListener("click", () => {
+    atualizarTarefas(true); // Exibe apenas as tarefas não concluídas
+});
+
+
