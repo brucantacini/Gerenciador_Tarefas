@@ -76,5 +76,16 @@ const totalConcluidas = tarefas.reduce((contador, tarefa) => {
 }, 0);
 alert(`Total de tarefas concluídas: ${totalConcluidas}`);
 
+// Usando destructuring para extrair título e concluída de uma tarefa específica
+const tarefaExemplo = tarefas[0];
+const { titulo, concluida } = tarefaExemplo;
+alert(`Título: ${titulo}, Concluída: ${concluida ? "Sim" : "Não"}`);
+
+
+
+// Renderizar tarefas iniciais ao carregar a página
+atualizarTarefas();
+
+
 
 
