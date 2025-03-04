@@ -89,10 +89,15 @@ alert(`Total de tarefas concluídas: ${totalConcluidas}`);
 const tarefasConcluidas = tarefas.filter(({ concluida }) => concluida);
 console.log("Tarefas Concluídas:", tarefasConcluidas);
 
-//  Crie uma função que aceita parâmetros e cria uma tarefa.
+// função que aceita parâmetros 
 function criarTarefa(titulo, concluida = false) {
     const tarefa = { titulo, concluida };
     return tarefa;
+}
+
+// função que aceita múltiplas tarefas 
+function adicionarTarefas(...tarefas) {
+    tarefas.forEach(tarefa => listaTarefas.appendChild(criarElementoTarefa(tarefa)));
 }
 
 atualizarTarefas();
