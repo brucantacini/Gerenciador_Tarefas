@@ -19,7 +19,32 @@ function criarTarefa(titulo, concluida = false) {
     };
 
     tarefas = [...tarefas, novaTarefa]; // Adiciona a nova tarefa ao array
-    renderizarTarefas(); // Atualiza a lista de tarefas
+    atualizarTarefas(); // Atualiza a lista de tarefas
     alert(`Tarefa "${titulo}" adicionada com sucesso!`); // Exibe o alert
 }
 
+// Função para atualizar a lista de tarefas no DOM usando forEach
+function atualizarTarefas(filtrarPendentes = false) {
+    listaTarefas.innerHTML = "";
+
+    const tarefasFiltradas = filtrarPendentes ? tarefas.filter(tarefa => !tarefa.concluida) : tarefas;
+
+    tarefasFiltradas.forEach((tarefa) => {
+        const li = document.createElement("li");
+        const span = document.createElement("span");
+        const botaoConcluir = document.createElement("button");
+
+        span.textContent = tarefa.titulo;
+        botaoConcluir.textContent = tarefa.concluida ? "Concluída" : "Concluir";
+        botaoConcluir.classList.add("botao-concluir");
+
+        botaoConcluir.addEventListener("click", () => {
+            tarefa.concluida = true; // Marca a tarefa como concluída
+            atualizarTarefas(); // Atualiza a lista
+        });
+
+        li.appendChild(span);
+        li.appendChild(botaoConcluir);
+        listaTarefas.appendChild(li);
+    });
+}
