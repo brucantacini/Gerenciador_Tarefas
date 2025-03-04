@@ -104,4 +104,22 @@ span {
     background-color: #f57c00;
 }
 
+li.completed span {
+    text-decoration: line-through;
+    color: #888;
+}
 
+#botao-filtrar {
+    background-color: #2196F3;
+    margin-top: 20px;
+}
+
+#botao-filtrar:hover {
+    background-color: #1976D2;
+}
+
+footer {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 10px;
+}
