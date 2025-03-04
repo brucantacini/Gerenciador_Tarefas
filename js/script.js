@@ -18,9 +18,9 @@ function criarTarefa(titulo, concluida = false) {
         concluida
     };
 
-    tarefas = [...tarefas, novaTarefa]; // Adiciona a nova tarefa ao array
-    atualizarTarefas(); // Atualiza a lista de tarefas
-    alert(`Tarefa "${titulo}" adicionada com sucesso!`); // Exibe o alert
+    tarefas = [...tarefas, novaTarefa]; 
+    atualizarTarefas(); 
+    alert(`Tarefa "${titulo}" adicionada com sucesso!`); 
 }
 
 // Adicionando evento ao botão "Cadastrar"
@@ -31,11 +31,7 @@ botaoCadastro.addEventListener("click", () => {
         alert("Por favor, digite uma tarefa!");
         return;
     }
-
-    // Usando a função para criar uma nova tarefa
-    criarTarefa(titulo);
-
-    // Limpando input   
+    criarTarefa(titulo); 
     inputTarefa.value = "";
 });
 
@@ -55,8 +51,8 @@ function atualizarTarefas(filtrarPendentes = false) {
         botaoConcluir.classList.add("botao-concluir");
 
         botaoConcluir.addEventListener("click", () => {
-            tarefa.concluida = true; // Marca a tarefa como concluída
-            atualizarTarefas(); // Atualiza a lista
+            tarefa.concluida = true; 
+            atualizarTarefas(); 
         });
 
         li.appendChild(span);
@@ -67,7 +63,13 @@ function atualizarTarefas(filtrarPendentes = false) {
 
 // Adicionando evento ao botão "Filtrar Pendentes"
 botaoFiltrar.addEventListener("click", () => {
-    atualizarTarefas(true); // Exibe apenas as tarefas não concluídas
+    atualizarTarefas(true); 
 });
+
+// Usando map para criar uma nova lista com os títulos em maiúsculas
+const tarefasMaiusculas = tarefas.map(tarefa => tarefa.titulo.toUpperCase());
+console.log("Tarefas em Maiúsculas:", tarefasMaiusculas);
+
+
 
 
