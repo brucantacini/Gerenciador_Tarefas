@@ -1,5 +1,5 @@
-# CP04 
-## Bruno Cantacini Araújo - RM560242
+# CheckPoint 04 - FIAP 
+## Bruno Cantacini Araújo
 
 ## _Gerenciador de Tarefas_
 Este é um Gerenciador de Tarefas desenvolvido para ajudar a adicionar, filtrar e concluir tarefas. 
